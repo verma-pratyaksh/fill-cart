@@ -1,4 +1,4 @@
-/* Reset and Container Styling */
+
 * {
   margin: 0;
   padding: 0;
@@ -92,7 +92,7 @@ p {
   align-items: center;
 }
 
-/* Checkbox and Links */
+/* Checkbox  */
 .checkbox-container {
   display: flex;
   justify-content: space-between;
