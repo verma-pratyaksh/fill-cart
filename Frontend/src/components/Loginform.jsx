@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import '../styling/Loginform.css';
-import logo from '../assets/FillCartLogo.png'
-import { FaEyeSlash } from "react-icons/fa6";
-import { FaEye } from "react-icons/fa";
+import logo from '../assets/FillCartLogo.png';
+import emailIcon from '../assets/email.png';
+import passwordIcon from '../assets/password.png';
+import { FaEyeSlash, FaEye } from "react-icons/fa";
 
 const Loginform = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState({ email: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
 
-  // Validation functions
   const validateEmail = (email) => {
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return emailPattern.test(email);
@@ -20,12 +20,9 @@ const Loginform = () => {
     return passwordPattern.test(password);
   };
 
-  // Handle input change and validate onChange
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-
-    // Inline validation as the user types
     if (name === 'email') {
       setErrors({ ...errors, email: value ? (validateEmail(value) ? '' : 'Invalid email format') : 'This field is required' });
     } else if (name === 'password') {
@@ -36,10 +33,8 @@ const Loginform = () => {
     }
   };
 
-  // Handle input blur for additional validation
   const handleBlur = (e) => {
     const { name, value } = e.target;
-
     if (name === 'email') {
       setErrors({ ...errors, email: value ? (validateEmail(value) ? '' : 'Invalid email format') : 'This field is required' });
     } else if (name === 'password') {
@@ -50,20 +45,15 @@ const Loginform = () => {
     }
   };
 
-  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Final validation check before submission
     if (!validateEmail(formData.email) || !validatePassword(formData.password)) {
       alert('Please correct the errors before submitting');
       return;
     }
-
     alert('Form submitted successfully!');
-    // Perform login logic here
   };
 
-  // Toggle password visibility
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
@@ -76,6 +66,7 @@ const Loginform = () => {
 
       <form onSubmit={handleSubmit}>
         <div className="input-field">
+          <img src={emailIcon} alt="Email" className="icon" />
           <input
             type="email"
             name="email"
@@ -88,7 +79,8 @@ const Loginform = () => {
           {errors.email && <div className="error">{errors.email}</div>}
         </div>
 
-        <div className="input-field password-container relative">
+        <div className="input-field password-container">
+          <img src={passwordIcon} alt="Password" className="icon" />
           <input
             type={showPassword ? 'text' : 'password'}
             name="password"
@@ -98,16 +90,13 @@ const Loginform = () => {
             onBlur={handleBlur}
             required
           />
-          {/* <span onClick={toggleShowPassword} className="show-password absolute right-0 top-1/2">
-            {showPassword ? <FaEye/>:<FaEyeSlash />}
-
-
-          </span> */}
+          <span onClick={toggleShowPassword} className="show-password">
+            {showPassword ? <FaEye /> : <FaEyeSlash />}
+          </span>
           {errors.password && <div className="error">{errors.password}</div>}
         </div>
 
         <div className="checkbox-container">
-          
           <a href="#">Forgot password?</a>
         </div>
 
