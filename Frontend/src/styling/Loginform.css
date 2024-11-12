@@ -1,3 +1,4 @@
+/* Reset and Container Styling */
 * {
   margin: 0;
   padding: 0;
@@ -14,14 +15,15 @@ body {
 }
 
 .login-container {
-  width: 600px; /* Adjusted for more compatibility on smaller screens */
+  width: 600px;
   padding: 40px;
   text-align: center;
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Header and Text */
 h2 {
   font-size: 24px;
   font-weight: bold;
@@ -33,31 +35,37 @@ p {
   margin-bottom: 24px;
 }
 
+/* Input Field Styling */
 .input-field {
   width: 100%;
-  margin: 15px 0;
+  margin-bottom: 24px;
   position: relative;
-  display: flex;
-  align-items: center;
 }
 
 .input-field input {
   width: 100%;
-  padding: 12px 40px 12px 40px; /* Padding adjusted for icons on both sides */
+  padding: 12px 40px; /* Extra space for the icon */
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
+  padding-left: 50px; /* Adjust padding to keep space for icon */
 }
 
+/* Icon Styling */
 .icon {
   position: absolute;
-  left: 10px;
-  top: 50%;
+  left: 15px;
+  top: 37%;
   transform: translateY(-50%);
   width: 20px;
   height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none; /* Prevent icon from interfering with input */
 }
 
+/* Password Container */
 .password-container {
   position: relative;
 }
@@ -65,12 +73,26 @@ p {
 .show-password {
   position: absolute;
   right: 10px;
-  top: 50%;
+  top: 35%;
   transform: translateY(-50%);
   cursor: pointer;
   color: #888;
+  align-items: center;
 }
 
+/* Error Message Styling */
+.error {
+  color: red;
+  font-size: 0.85em;
+  margin-top: 10px; /* Space between input and error message */
+  text-align: left;
+  padding-left: 10px;
+  height: 18px; /* Reserve space for the error message */
+  
+  align-items: center;
+}
+
+/* Checkbox and Links */
 .checkbox-container {
   display: flex;
   justify-content: space-between;
@@ -80,6 +102,16 @@ p {
   margin-bottom: 24px;
 }
 
+.checkbox-container a {
+  color: #333;
+  text-decoration: none;
+}
+
+.checkbox-container a:hover {
+  text-decoration: underline;
+}
+
+/* Buttons */
 .btn {
   width: 100%;
   padding: 12px;
@@ -103,10 +135,11 @@ p {
 }
 
 .btn-google img {
-  width: 20px; /* Adjusted to align with button size */
+  width: 20px;
   margin-right: 8px;
 }
 
+/* Footer */
 .footer {
   font-size: 14px;
   color: #666;
@@ -121,12 +154,4 @@ p {
 
 .footer a:hover {
   text-decoration: underline;
-}
-
-.error {
-  color: red;
-  font-size: 0.85em;
-  margin-top: 4px;
-  text-align: left;
-  padding-left: 10px;
 }
